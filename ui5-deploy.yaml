@@ -1,0 +1,23 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.6"
+metadata:
+  name: ndbs.gfc.gfcmembersui
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          destination: NTT_S4HC_CUST
+          url: https://my401370-api.s4hana.cloud.sap
+        app:
+          name: YY1_GFC_MEMBERS
+          description: GFC Members Custom Fiori Application
+          package: TEST_YY1_DEFAULT
+          transport: ""

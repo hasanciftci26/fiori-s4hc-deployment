@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://my401370-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401370-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401370-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401370-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401370-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401370-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401370-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401370-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401370-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://my401370-api.s4hana.cloud.sap/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="YY1_GFC_MEMBERS_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="P_Scbo_UserType" sap:label="User" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="name"/>
+                </Key>
+                <Property Name="name" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="User" sap:quickinfo="User Name in User Master Record"/>
+                <Property Name="description" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account"/>
+            </EntityType>
+            <EntityType Name="YY1_GFC_MEMBERSType" sap:label="GFC Member" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="PersonnelNo" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative" sap:label="Personnel No"/>
+                <Property Name="FirstName" Type="Edm.String" MaxLength="40" sap:label="First Name"/>
+                <Property Name="LastName" Type="Edm.String" MaxLength="40" sap:label="Last Name"/>
+                <Property Name="TopicsCount" Type="Edm.Decimal" Precision="4" Scale="0" sap:label="Topics Count"/>
+                <Property Name="SAP_Description" Type="Edm.String" MaxLength="80" sap:label="Description"/>
+                <Property Name="SAP_CreatedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_CreatedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="SAP_CreatedByUser_Text" sap:label="Created By" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_CreatedByUser_Text" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedByUser" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:text="SAP_LastChangedByUser_Text" sap:label="Last Changed By" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="SAP_LastChangedByUser_Text" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="Description of the Technical User Account" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_LEARNING_PATHS" Relationship="YY1_GFC_MEMBERS_CDS.assoc_E61A47B1DA90F71B4C0D9034E29F5F40" FromRole="FromRole_assoc_E61A47B1DA90F71B4C0D9034E29F5F40" ToRole="ToRole_assoc_E61A47B1DA90F71B4C0D9034E29F5F40"/>
+                <NavigationProperty Name="to_SAPSysAdminDataChangeUser" Relationship="YY1_GFC_MEMBERS_CDS.assoc_D75DDF06D98F53213F64F202E182B8D1" FromRole="FromRole_assoc_D75DDF06D98F53213F64F202E182B8D1" ToRole="ToRole_assoc_D75DDF06D98F53213F64F202E182B8D1"/>
+                <NavigationProperty Name="to_SAPSysAdminDataCreateUser" Relationship="YY1_GFC_MEMBERS_CDS.assoc_5818C987BB44DAC992121F8DDF5B3C29" FromRole="FromRole_assoc_5818C987BB44DAC992121F8DDF5B3C29" ToRole="ToRole_assoc_5818C987BB44DAC992121F8DDF5B3C29"/>
+            </EntityType>
+            <EntityType Name="YY1_LEARNING_PATHS_GFC_MEMBERSType" sap:label="Learning Path" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SAP_UUID"/>
+                </Key>
+                <Property Name="Complete_topic_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SAP_UUID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="SAP_PARENT_UUID" Type="Edm.Guid" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                <Property Name="TopicID" Type="Edm.String" MaxLength="5" sap:text="TopicID_Text" sap:label="Topic ID" sap:value-list="standard"/>
+                <Property Name="TopicID_Text" Type="Edm.String" MaxLength="60" sap:label="Description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CompletionRate" Type="Edm.Decimal" Precision="3" Scale="2" sap:label="Completion Rate"/>
+                <NavigationProperty Name="to_GFC_MEMBERS" Relationship="YY1_GFC_MEMBERS_CDS.assoc_E61A47B1DA90F71B4C0D9034E29F5F40" FromRole="ToRole_assoc_E61A47B1DA90F71B4C0D9034E29F5F40" ToRole="FromRole_assoc_E61A47B1DA90F71B4C0D9034E29F5F40"/>
+                <NavigationProperty Name="to_TopicID" Relationship="YY1_GFC_MEMBERS_CDS.assoc_49919E0039FBAD56F775D855C9D2F702" FromRole="FromRole_assoc_49919E0039FBAD56F775D855C9D2F702" ToRole="ToRole_assoc_49919E0039FBAD56F775D855C9D2F702"/>
+            </EntityType>
+            <EntityType Name="YY1_TOPICSType" sap:label="Topics" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Code"/>
+                </Key>
+                <Property Name="Code" Type="Edm.String" Nullable="false" MaxLength="5" sap:text="Description" sap:label="Code"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="60" sap:label="Description"/>
+            </EntityType>
+            <Association Name="assoc_49919E0039FBAD56F775D855C9D2F702" sap:content-version="1">
+                <End Type="YY1_GFC_MEMBERS_CDS.YY1_LEARNING_PATHS_GFC_MEMBERSType" Multiplicity="1" Role="FromRole_assoc_49919E0039FBAD56F775D855C9D2F702"/>
+                <End Type="YY1_GFC_MEMBERS_CDS.YY1_TOPICSType" Multiplicity="0..1" Role="ToRole_assoc_49919E0039FBAD56F775D855C9D2F702"/>
+                <ReferentialConstraint>
+                    <Principal Role="ToRole_assoc_49919E0039FBAD56F775D855C9D2F702">
+                        <PropertyRef Name="Code"/>
+                    </Principal>
+                    <Dependent Role="FromRole_assoc_49919E0039FBAD56F775D855C9D2F702">
+                        <PropertyRef Name="TopicID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_D75DDF06D98F53213F64F202E182B8D1" sap:content-version="1">
+                <End Type="YY1_GFC_MEMBERS_CDS.YY1_GFC_MEMBERSType" Multiplicity="1" Role="FromRole_assoc_D75DDF06D98F53213F64F202E182B8D1"/>
+                <End Type="YY1_GFC_MEMBERS_CDS.P_Scbo_UserType" Multiplicity="0..1" Role="ToRole_assoc_D75DDF06D98F53213F64F202E182B8D1"/>
+            </Association>
+            <Association Name="assoc_5818C987BB44DAC992121F8DDF5B3C29" sap:content-version="1">
+                <End Type="YY1_GFC_MEMBERS_CDS.YY1_GFC_MEMBERSType" Multiplicity="1" Role="FromRole_assoc_5818C987BB44DAC992121F8DDF5B3C29"/>
+                <End Type="YY1_GFC_MEMBERS_CDS.P_Scbo_UserType" Multiplicity="0..1" Role="ToRole_assoc_5818C987BB44DAC992121F8DDF5B3C29"/>
+            </Association>
+            <Association Name="assoc_E61A47B1DA90F71B4C0D9034E29F5F40" sap:content-version="1">
+                <End Type="YY1_GFC_MEMBERS_CDS.YY1_GFC_MEMBERSType" Multiplicity="1" Role="FromRole_assoc_E61A47B1DA90F71B4C0D9034E29F5F40">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="YY1_GFC_MEMBERS_CDS.YY1_LEARNING_PATHS_GFC_MEMBERSType" Multiplicity="*" Role="ToRole_assoc_E61A47B1DA90F71B4C0D9034E29F5F40"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_E61A47B1DA90F71B4C0D9034E29F5F40">
+                        <PropertyRef Name="SAP_UUID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_E61A47B1DA90F71B4C0D9034E29F5F40">
+                        <PropertyRef Name="SAP_PARENT_UUID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="YY1_GFC_MEMBERS_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="P_Scbo_User" EntityType="YY1_GFC_MEMBERS_CDS.P_Scbo_UserType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="YY1_GFC_MEMBERS" EntityType="YY1_GFC_MEMBERS_CDS.YY1_GFC_MEMBERSType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="YY1_LEARNING_PATHS_GFC_MEMBERS" EntityType="YY1_GFC_MEMBERS_CDS.YY1_LEARNING_PATHS_GFC_MEMBERSType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="YY1_TOPICS" EntityType="YY1_GFC_MEMBERS_CDS.YY1_TOPICSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_49919E0039FBAD56F775D855C9D2F702" Association="YY1_GFC_MEMBERS_CDS.assoc_49919E0039FBAD56F775D855C9D2F702" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_LEARNING_PATHS_GFC_MEMBERS" Role="FromRole_assoc_49919E0039FBAD56F775D855C9D2F702"/>
+                    <End EntitySet="YY1_TOPICS" Role="ToRole_assoc_49919E0039FBAD56F775D855C9D2F702"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_D75DDF06D98F53213F64F202E182B8D1" Association="YY1_GFC_MEMBERS_CDS.assoc_D75DDF06D98F53213F64F202E182B8D1" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_GFC_MEMBERS" Role="FromRole_assoc_D75DDF06D98F53213F64F202E182B8D1"/>
+                    <End EntitySet="P_Scbo_User" Role="ToRole_assoc_D75DDF06D98F53213F64F202E182B8D1"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_5818C987BB44DAC992121F8DDF5B3C29" Association="YY1_GFC_MEMBERS_CDS.assoc_5818C987BB44DAC992121F8DDF5B3C29" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_GFC_MEMBERS" Role="FromRole_assoc_5818C987BB44DAC992121F8DDF5B3C29"/>
+                    <End EntitySet="P_Scbo_User" Role="ToRole_assoc_5818C987BB44DAC992121F8DDF5B3C29"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_E61A47B1DA90F71B4C0D9034E29F5F40" Association="YY1_GFC_MEMBERS_CDS.assoc_E61A47B1DA90F71B4C0D9034E29F5F40" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="YY1_GFC_MEMBERS" Role="FromRole_assoc_E61A47B1DA90F71B4C0D9034E29F5F40"/>
+                    <End EntitySet="YY1_LEARNING_PATHS_GFC_MEMBERS" Role="ToRole_assoc_E61A47B1DA90F71B4C0D9034E29F5F40"/>
+                </AssociationSet>
+                <FunctionImport Name="YY1_GFC_MEMBERSSap_upsert" ReturnType="YY1_GFC_MEMBERS_CDS.YY1_GFC_MEMBERSType" EntitySet="YY1_GFC_MEMBERS" m:HttpMethod="POST">
+                    <Parameter Name="PersonnelNo" Type="Edm.String" Mode="In" MaxLength="8" sap:label="Numeric length 8"/>
+                    <Parameter Name="FirstName" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Text of length 40"/>
+                    <Parameter Name="LastName" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Text of length 40"/>
+                    <Parameter Name="TopicsCount" Type="Edm.Decimal" Mode="In" Precision="4" Scale="0" sap:label="Topics Count"/>
+                    <Parameter Name="SAP_Description" Type="Edm.String" Mode="In" MaxLength="80" sap:label="Text of length 80"/>
+                </FunctionImport>
+                <FunctionImport Name="A7DC8B3542BA762B98A5E1E9BDComplete_topic" ReturnType="YY1_GFC_MEMBERS_CDS.YY1_LEARNING_PATHS_GFC_MEMBERSType" EntitySet="YY1_LEARNING_PATHS_GFC_MEMBERS" m:HttpMethod="POST" sap:action-for="YY1_GFC_MEMBERS_CDS.YY1_LEARNING_PATHS_GFC_MEMBERSType" sap:applicable-path="Complete_topic_ac">
+                    <Parameter Name="SAP_UUID" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                </FunctionImport>
+            </EntityContainer>
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <Annotations Target="YY1_GFC_MEMBERS_CDS.YY1_LEARNING_PATHS_GFC_MEMBERSType/TopicID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Topics"/>
+                        <PropertyValue Property="CollectionPath" String="YY1_TOPICS"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="TopicID"/>
+                                    <PropertyValue Property="ValueListProperty" String="Code"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Description"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GFC_MEMBERS_CDS.YY1_GFC_MEMBERS_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="YY1_GFC_MEMBERS_CDS.YY1_GFC_MEMBERSType/to_LEARNING_PATHS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="YY1_GFC_MEMBERS_CDS.YY1_GFC_MEMBERSType/PersonnelNo" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="YY1_GFC_MEMBERS_CDS.YY1_GFC_MEMBERS_CDS_Entities/YY1_LEARNING_PATHS_GFC_MEMBERS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Complete_topic_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_GFC_MEMBERS"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_TopicID"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Complete_topic_ac</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GFC_MEMBERS_CDS.YY1_GFC_MEMBERS_CDS_Entities/YY1_GFC_MEMBERS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_LEARNING_PATHS"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="true"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SAPSysAdminDataChangeUser"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_SAPSysAdminDataCreateUser"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="YY1_GFC_MEMBERS_CDS.YY1_GFC_MEMBERSType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>PersonnelNo</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://my401370-api.s4hana.cloud.sap/sap/opu/odata/sap/YY1_GFC_MEMBERS_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://my401370-api.s4hana.cloud.sap/sap/opu/odata/sap/YY1_GFC_MEMBERS_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

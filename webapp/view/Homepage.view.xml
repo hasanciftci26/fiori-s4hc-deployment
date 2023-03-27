@@ -1,0 +1,32 @@
+<mvc:View controllerName="ndbs.gfc.gfcmembersui.controller.Homepage"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Table items="{/YY1_GFC_MEMBERS}">
+                <columns>
+                    <Column>
+                        <Label text="Personnel No" />
+                    </Column>
+                    <Column>
+                        <Label text="First Name" />
+                    </Column>
+                    <Column>
+                        <Label text="Last Name" />
+                    </Column>
+                    <Column>
+                        <Label text="Topics Count" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem>
+                        <Text text="{PersonnelNo}"/>
+                        <Text text="{FirstName}"/>
+                        <Text text="{LastName}"/>
+                        <Text text="{TopicsCount}"/>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>
